@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "540986097814",
+    "project_id": "eco-life-f3ea1",
+    "storage_bucket": "eco-life-f3ea1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540986097814:android:774b5b17f6e2b9edd982b7",
+        "android_client_info": {
+          "package_name": "com.example.eco_life"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLY5VdzBPpbxC1XzMM3jqV6hwmyTgr3jI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
