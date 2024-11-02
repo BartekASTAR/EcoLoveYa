@@ -1,5 +1,7 @@
+import 'package:datetime_setting/datetime_setting.dart';
 import 'package:eco_life/basket_page.dart';
 import 'package:eco_life/habits.dart';
+import 'package:eco_life/weekly_bar.dart';
 import 'package:flutter/material.dart';
 
 //TextButton(onPressed: () {
@@ -15,15 +17,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Profil',
-      style: optionStyle,
-    ),
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  List<Widget> _widgetOptions = <Widget>[
+    Text("Profil"),
     Habits(),
     Text(
       'Znajomi',
@@ -63,7 +61,5 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
     );
-
+  }
 }
-}
-

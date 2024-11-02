@@ -1,8 +1,12 @@
-import 'package:eco_life/circle_button.dart';
 import 'package:flutter/material.dart';
 
 class HabitTile extends StatelessWidget {
-  const HabitTile({super.key});
+  final String habitName;
+
+  const HabitTile({
+    super.key,
+    required this.habitName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +21,10 @@ class HabitTile extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              children: [Text("Nazwa")],
+              children: [Text(habitName)],
             ),
             Row(
-              children: [
-                CircleButton(),
-                CircleButton(),
-                CircleButton(),
-                CircleButton(),
-                CircleButton(),
-                CircleButton(),
-                CircleButton(),
-              ],
+              children: [],
             ),
           ],
         ),
