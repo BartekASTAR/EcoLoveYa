@@ -1,7 +1,5 @@
-import 'package:datetime_setting/datetime_setting.dart';
-import 'package:eco_life/basket_page.dart';
-import 'package:eco_life/habits.dart';
-import 'package:eco_life/weekly_bar.dart';
+import 'package:eco_life/pages/habits_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 //TextButton(onPressed: () {
@@ -9,21 +7,32 @@ import 'package:flutter/material.dart';
 //MaterialPageRoute(builder: (context) => BasketPage()));
 //}, child: Text('Go to basket')),
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser!;
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[
-    Text("Profil"),
-    Habits(),
-    Text(
+  final List<Widget> _widgetOptions = <Widget>[
+    Column(
+      children: [
+        Text('Signed in as a: '),
+        MaterialButton(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+          },
+          child: const Text("sign out"),
+        ),
+      ],
+    ),
+    const Habits(),
+    const Text(
       'Znajomi',
       style: optionStyle,
     ),

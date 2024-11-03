@@ -1,4 +1,4 @@
-import 'package:eco_life/circle_button.dart';
+import 'package:eco_life/elements/circle_button.dart';
 import 'package:flutter/material.dart';
 
 class HabitTileWeekly extends StatelessWidget {

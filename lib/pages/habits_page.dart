@@ -1,8 +1,7 @@
-import 'package:eco_life/habit_tile_weekly.dart';
-import 'package:eco_life/weekly_bar.dart';
+import 'package:eco_life/elements/weekly_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'habit_tile.dart';
+import '../elements/habit_tile.dart';
 
 class Habits extends StatefulWidget {
   const Habits({super.key});

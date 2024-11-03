@@ -1,6 +1,6 @@
-import 'package:eco_life/basket.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eco_life/trash/basket.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 const COLLECTION_NAME = 'basket_items';
