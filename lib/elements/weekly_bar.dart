@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class WeeklyBar extends StatefulWidget {
@@ -13,6 +15,8 @@ class _WeeklyBarState extends State<WeeklyBar> {
   final List<String> days = ['P', 'W', 'Ś', 'C', 'P', 'S', 'N'];
   List<int> dates = [];
 
+  final User user = FirebaseAuth.instance.currentUser!;
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +30,7 @@ class _WeeklyBarState extends State<WeeklyBar> {
     _updateWeekDates();
     selectedDayIndex =
         now.weekday - 1; // Ustawienie zaznaczenia na bieżący dzień tygodnia
+    _returnSelectedDateHabits(selectedDayIndex);
   }
 
   void _updateWeekDates() {
@@ -46,11 +51,53 @@ class _WeeklyBarState extends State<WeeklyBar> {
     });
   }
 
-  // Metoda drukująca datę na podstawie indeksu dnia
-  void _returnSelectedDate(int dayIndex) {
+  // TODO Dodać połączenie z firebase
+  Future _returnSelectedDateHabits(int dayIndex) async {
+    String selectedDate = _returnSelectedDate(dayIndex);
+    DocumentSnapshot document = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .collection("dates")
+        .doc(selectedDate)
+        .get();
+    if (document.exists) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection("dates")
+          .doc(selectedDate);
+    } else {
+      _createDate(selectedDate);
+    }
+  }
+
+  Future _createDate(String selectedDate) async {
+    //TODO Dodać nawyki użytkownika await FirebaseFirestore.instance.collection('').
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .collection("dates")
+        .doc(selectedDate)
+        .set({});
+  }
+
+  String _returnSelectedDate(int dayIndex) {
     DateTime selectedDate = currentWeekStart.add(Duration(days: dayIndex));
-    print(
-        "Wybrana data: ${selectedDate.day}-${selectedDate.month}-${selectedDate.year}");
+    String date = "";
+
+    if (selectedDate.day < 10) {
+      date += "0" + selectedDate.day.toString() + "-";
+    } else {
+      date += selectedDate.day.toString() + "-";
+    }
+    if (selectedDate.month < 10) {
+      date += "0" + selectedDate.month.toString() + "-";
+    } else {
+      date += selectedDate.month.toString() + "-";
+    }
+    date += selectedDate.year.toString();
+    //print(date);
+    return date;
   }
 
   @override
@@ -102,8 +149,7 @@ class _WeeklyBarState extends State<WeeklyBar> {
             setState(() {
               selectedDayIndex =
                   index; // Zmieniamy selectedDayIndex dla wszystkich tygodni
-              _returnSelectedDate(
-                  index); // Wywołujemy funkcję, która drukuje datę dla klikniętego dnia
+              _returnSelectedDateHabits(index);
             });
           },
           child: Container(

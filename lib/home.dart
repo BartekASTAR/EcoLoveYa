@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
   int _selectedIndex = 0;
+
+  // String name = FirebaseFirestore.instance.collection('users').doc(user.uid).get("nickName"); //TODO dodać żeby wyświetlała się nazwa uytkownika
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[

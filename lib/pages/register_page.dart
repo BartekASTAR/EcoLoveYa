@@ -41,6 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
     await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
       'nickName': _nickNameController.text.trim(),
       'email': _emailController.text.trim(),
+      'trackedHabits': [false, false, false, false, false, false],
     });
   }
 
