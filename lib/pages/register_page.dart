@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      //backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -65,14 +65,14 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Hello There!',
+                  'Załóż konto',
                   style: GoogleFonts.bebasNeue(fontSize: 52),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'Register bellow with your details!',
+                  'Zarejestruj się podając szczegóły',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -82,17 +82,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: _nickNameController,
+                        cursorColor: Colors.green,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Nickname',
+                          hintText: 'Nazwa',
                         ),
                       ),
                     ),
@@ -105,13 +106,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                        cursorColor: Colors.green,
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -128,8 +130,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
@@ -137,9 +139,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         obscureText: true,
                         controller: _passwordController,
+                        cursorColor: Colors.green,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Hasło',
                         ),
                       ),
                     ),
@@ -152,8 +155,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
@@ -161,9 +164,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         obscureText: true,
                         controller: _confirmPasswordController,
+                        cursorColor: Colors.green,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Confirm password',
+                          hintText: 'Powtórz hasło',
                         ),
                       ),
                     ),
@@ -183,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Center(
                           child: Text(
-                        'Sing Up',
+                        'Zarejestruj się',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -199,13 +203,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "I am a member!",
+                      "Mam już konto!",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
                       onTap: widget.showLoginPage,
                       child: Text(
-                        ' Login now',
+                        ' Zaloguj się',
                         style: TextStyle(
                             color: Colors.blue, fontWeight: FontWeight.bold),
                       ),

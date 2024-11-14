@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eco_life/data_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WeeklyBar extends StatefulWidget {
   @override
@@ -51,23 +53,18 @@ class _WeeklyBarState extends State<WeeklyBar> {
     });
   }
 
-  // TODO Dodać połączenie z firebase
   Future _returnSelectedDateHabits(int dayIndex) async {
-    String selectedDate = _returnSelectedDate(dayIndex);
+    _changeSelectedDate(dayIndex);
     DocumentSnapshot document = await FirebaseFirestore.instance
         .collection('users')
         .doc(user.uid)
         .collection("dates")
-        .doc(selectedDate)
+        .doc(context.read<DataProvider>().selectedDate)
         .get();
     if (document.exists) {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection("dates")
-          .doc(selectedDate);
+      //await FirebaseFirestore.instance.collection('users').doc(user.uid).collection("dates").doc(context.read<DateProvider>().selectedDate);
     } else {
-      _createDate(selectedDate);
+      _createDate(context.read<DataProvider>().selectedDate);
     }
   }
 
@@ -78,10 +75,20 @@ class _WeeklyBarState extends State<WeeklyBar> {
         .doc(user.uid)
         .collection("dates")
         .doc(selectedDate)
-        .set({});
+        .set({
+      'bag_mass': 0,
+      'bag_emission': 0,
+      'bottle_mass': 0,
+      'bottle_emission': 0,
+      'trash_mass': 0,
+      'trash_emission': 0,
+      'water_usage': 0,
+      'car_emission': 0,
+      'meat_emission': 0,
+    });
   }
 
-  String _returnSelectedDate(int dayIndex) {
+  void _changeSelectedDate(int dayIndex) {
     DateTime selectedDate = currentWeekStart.add(Duration(days: dayIndex));
     String date = "";
 
@@ -97,7 +104,7 @@ class _WeeklyBarState extends State<WeeklyBar> {
     }
     date += selectedDate.year.toString();
     //print(date);
-    return date;
+    context.read<DataProvider>().changeSelectedDate(newSelectedDate: date);
   }
 
   @override
@@ -115,7 +122,7 @@ class _WeeklyBarState extends State<WeeklyBar> {
         }
       },
       child: Container(
-        height: 100,
+        height: 65,
         child: PageView.builder(
           controller: _pageController,
           onPageChanged: (page) {
@@ -161,7 +168,7 @@ class _WeeklyBarState extends State<WeeklyBar> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: isSelected ? Colors.green : Colors.grey,
+                    color: isSelected ? Colors.green[400] : Colors.grey,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -169,7 +176,8 @@ class _WeeklyBarState extends State<WeeklyBar> {
                   width: 32,
                   height: 32,
                   decoration: BoxDecoration(
-                    color: isSelected ? Colors.green : Colors.grey.shade200,
+                    color:
+                        isSelected ? Colors.green[400] : Colors.grey.shade200,
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,

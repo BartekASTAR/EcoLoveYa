@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      //backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -41,14 +41,14 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Hello Again!',
+                  'Witaj ponownie!',
                   style: GoogleFonts.bebasNeue(fontSize: 52),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'Welcome back, you\'ve been missed!',
+                  'Brakowało nam Ciebie!',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -58,14 +58,15 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: _emailController,
+                        cursorColor: Colors.green[400],
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email',
@@ -81,18 +82,19 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey[200],
+                      border: Border.all(), //color: Colors.white
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         obscureText: true,
+                        cursorColor: Colors.green,
                         controller: _passwordController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Hasło',
                         ),
                       ),
                     ),
@@ -112,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Center(
                           child: Text(
-                        'Sing In',
+                        'Zaloguj się',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -128,13 +130,13 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Not a member?",
+                      "Nie masz konta?",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
                       onTap: widget.showRegisterPage,
                       child: Text(
-                        ' Register Now',
+                        ' Zarejestruj się',
                         style: TextStyle(
                             color: Colors.blue, fontWeight: FontWeight.bold),
                       ),

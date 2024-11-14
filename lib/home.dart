@@ -1,4 +1,5 @@
 import 'package:eco_life/pages/habits_page.dart';
+import 'package:eco_life/pages/profil_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -16,27 +17,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   // String name = FirebaseFirestore.instance.collection('users').doc(user.uid).get("nickName"); //TODO dodać żeby wyświetlała się nazwa uytkownika
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
-    Column(
+    const ProfilPage(),
+    const Habits(),
+    const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Signed in as a: '),
-        MaterialButton(
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
-          },
-          child: const Text("sign out"),
+        Text(
+          textAlign: TextAlign.center,
+          'Znajomi',
+          style: optionStyle,
+        ),
+        Text(
+          textAlign: TextAlign.center,
+          'do dodania w przyszłości ;)',
+          style: TextStyle(fontSize: 14),
         ),
       ],
-    ),
-    const Habits(),
-    const Text(
-      'Znajomi',
-      style: optionStyle,
     ),
   ];
 
