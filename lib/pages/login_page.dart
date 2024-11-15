@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../auth/toast.dart';
+
+
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
 
@@ -16,9 +19,23 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == "wrong-password") {
+        showToast(message: "Błędny email lub hasło!!");
+      }else if (e.code == 'invalid-credential'){
+        showToast(message: "Błędny email lub hasło");
+      }
+      else if (e.code == 'invalid-email'){
+        showToast(message: "To nie email");
+      }
+      else{
+        showToast(message: "Błąd: ${e.code}");
+      }
+    }
   }
 
   //TODO: Forgot password functionality
