@@ -10,7 +10,8 @@ class NumbersWidget extends StatefulWidget {
 class _NumbersWidgetState extends State<NumbersWidget> {
   final uid = FirebaseAuth.instance.currentUser?.uid;
   int totalMass = 0;
-  int totalEmission = 0;
+  double totalEmission = 0;
+  int totalUsage = 0;
   bool isLoading = true;
 
   @override
@@ -33,8 +34,11 @@ class _NumbersWidgetState extends State<NumbersWidget> {
         if (key.endsWith('_mass') && value is int) {
           totalMass += value;
         }
-        if (key.endsWith('_emission') && value is int) {
+        if (key.endsWith('_emission') && value is double) {
           totalEmission += value;
+        }
+        if (key.endsWith('_usage') && value is int) {
+          totalUsage += value;
         }
       });
     });
@@ -69,9 +73,9 @@ class _NumbersWidgetState extends State<NumbersWidget> {
       );
 
   Widget buildDivider() => Container(
-        height: 28,
-        child: VerticalDivider(),
-      );
+    height: 28,
+    child: VerticalDivider(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +94,7 @@ class _NumbersWidgetState extends State<NumbersWidget> {
           buildButton(context, totalMass.toString(), 'g plastiku'),
           buildDivider(),
           buildButton(
-              context, '0', 'l wody'), // tu można podmienić na inną wartość
+              context, totalUsage.toString(), 'l wody'), // tu można podmienić na inną wartość
           buildDivider(),
           buildButton(context, (totalEmission / 1000).toString(), 'kg CO2'),
         ],

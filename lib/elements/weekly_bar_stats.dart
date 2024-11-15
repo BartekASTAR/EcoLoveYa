@@ -20,7 +20,7 @@ class _WeeklyBarStatsState extends State<WeeklyBarStats> {
   List<String> currentWeekDatesList = [];
   final User user = FirebaseAuth.instance.currentUser!;
   int totalMass = 0;
-  int totalEmission = 0;
+  double totalEmission = 0;
   int totalUsage = 0;
   bool isLoading = true;
   bool isRefreshing = false;
@@ -145,9 +145,9 @@ class _WeeklyBarStatsState extends State<WeeklyBarStats> {
       );
 
   Widget buildDivider() => Container(
-        height: 28,
-        child: VerticalDivider(),
-      );
+    height: 28,
+    child: VerticalDivider(),
+  );
 
   List<String> getWeekDates(String date) {
     // Format daty wejściowej
@@ -197,7 +197,7 @@ class _WeeklyBarStatsState extends State<WeeklyBarStats> {
         if (key.endsWith('_mass') && value is int) {
           totalMass += value;
         }
-        if (key.endsWith('_emission') && value is int) {
+        if (key.endsWith('_emission') && value is double) {
           totalEmission += value;
         }
         if (key.endsWith('_usage') && value is int) {
@@ -350,7 +350,7 @@ class _WeeklyBarStatsState extends State<WeeklyBarStats> {
                   height: 32,
                   decoration: BoxDecoration(
                     color:
-                        isSelected ? Colors.green[400] : Colors.grey.shade200,
+                    isSelected ? Colors.green[400] : Colors.grey.shade200,
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,
