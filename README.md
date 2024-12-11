@@ -33,3 +33,6 @@ Mimo tych wyzwań wierzę, że dzięki dalszemu rozwojowi aplikacji i wprowadzan
 
 ### 6) Dlaczego akurat Wy powinniście wygrać? Napisz, co wyróżnia Wasz pomysł lub jego realizacja np. wybór innowacyjnej technologii.
 Moja aplikacja wyróżnia się na tle innych rozwiązań przede wszystkim tym, że w bardzo atrakcyjny sposób pozwala użytkownikom edukować się w sprawie ochrony środowiska i daje możliwość budowania prostych nawyków, które w długoterminowej perspektywie przynoszą ogromne korzyści. Ponadto mój plan dalszego rozwoju przekształci tą dość prostą aplikację w rozbudowaną platformę mającą realny wpływ na poprawę stanu środowiska. Warto jeszcze wspomnieć, że jest to mój pierwszy projekt wykorzystujący Fluttera oraz Firebase.
+
+## 11.12.2024 Error Update
+Z nieznanych mi powodów aplikacja przestała łączyć się z serwerem Firebase Firestore. Tworzenie użytkowników działa normalnie, natomiast połączenie z bazą danych padło. Po odesłaniu projektu na konkurs odstawiłem go i włączałem aplikację tylko co jakiś czas. Wszytko działało poprawnie, aż dzisiaj zobaczyłem, że aplikacja nie łączy się z bazą danych i cały czas widać tylko ekran ładowania. Mogę spróbować to naprawić, jednak nie wiem, czy nie zdyskfalifikuje to pracy z konkursu.
