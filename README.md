@@ -36,3 +36,4 @@ Moja aplikacja wyróżnia się na tle innych rozwiązań przede wszystkim tym, �
 
 ## 11.12.2024 Error Update
 Z nieznanych mi powodów aplikacja przestała łączyć się z serwerem Firebase Firestore. Tworzenie użytkowników działa normalnie, natomiast połączenie z bazą danych padło. Po odesłaniu projektu na konkurs odstawiłem go i włączałem aplikację tylko co jakiś czas. Wszytko działało poprawnie, aż dzisiaj zobaczyłem, że aplikacja nie łączy się z bazą danych i cały czas widać tylko ekran ładowania. Mogę spróbować to naprawić, jednak nie wiem, czy nie zdyskfalifikuje to pracy z konkursu.
+Rozwiązanie: Łączenie z Firestore było w trybie testowym i zezwolenie na łączenie się z bazą było przyznane do 01.12.2024. Zmiana tego ustawienia zażegnała problem
